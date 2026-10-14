@@ -641,6 +641,11 @@ async def test_osm_maps_the_trades_it_does_know():
     assert provider._tags("Emergency plumber") == ["craft=plumber"]
     assert provider._tags("cosmetic dentist") == ["amenity=dentist"]
     assert provider._tags("B2B SaaS") == []
+    assert provider._tags("Event planner") == ["office=event_management"]
+    assert provider._tags("Wedding venue") == ["amenity=events_venue", "amenity=conference_centre"]
+    assert provider._tags("Bridal shop") == ["shop=wedding"]
+    assert provider._tags("Hotels") == ["tourism=hotel"]
+    assert provider._tags("High school") == ["amenity=school"]
 
 
 @pytest.mark.asyncio

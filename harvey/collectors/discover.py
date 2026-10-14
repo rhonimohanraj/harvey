@@ -496,6 +496,23 @@ class OpenStreetMap(DiscoveryProvider):
         "attorney": ['office=lawyer'],
         "contractor": ['craft=builder', 'office=construction_company'],
         "landscap": ['craft=gardener', 'shop=garden_centre'],
+        # Event industry: venues, planners and the businesses that hire
+        # entertainment. Specific needles come first: "event planner" must not
+        # fall through to "venue", and "wedding venue" must not hit "wedding".
+        "planner": ['office=event_management'],
+        "venue": ['amenity=events_venue', 'amenity=conference_centre'],
+        "banquet": ['amenity=events_venue'],
+        "conference": ['amenity=conference_centre'],
+        "hotel": ['tourism=hotel'],
+        "golf": ['leisure=golf_course'],
+        "brewer": ['craft=brewery'],
+        "winer": ['craft=winery'],
+        "bridal": ['shop=wedding'],
+        "wedding": ['shop=wedding'],
+        "florist": ['shop=florist'],
+        "photograph": ['craft=photographer', 'shop=photo'],
+        "school": ['amenity=school'],
+        "community": ['amenity=community_centre'],
     }
 
     def _tags(self, term: str) -> list[str]:
